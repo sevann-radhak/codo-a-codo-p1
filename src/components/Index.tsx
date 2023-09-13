@@ -3,8 +3,8 @@ import React from 'react';
 const Index: React.FC = () => {
     return (
         <div>
-            <h1>Index Page</h1>
-            <p>This is the Index page content.</p>
+            <h1>Pagina de Valentin</h1>
+            <p>Texto modificado</p>
         </div>
     );
 };
