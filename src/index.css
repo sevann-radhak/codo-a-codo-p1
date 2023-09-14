@@ -6,7 +6,28 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-
+nav {
+list-style: none;
+padding: 0;
+background: #092327;
+width: 90%;
+max-width: 1000px;
+margin: auto;
+}
+nav li{
+text-decoration: none;
+color: white;
+padding: 20px;
+display: block;  
+}
+nav li{
+display:inline-block;
+text-align:center;
+;
+}
+nav li:hover{
+background: #ef8354;
+}
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
