@@ -10,24 +10,34 @@ nav {
 list-style: none;
 padding: 0;
 background: #092327;
-width: 90%;
+width: 100%;
 max-width: 1000px;
 margin: auto;
 }
-nav li{
-text-decoration: none;
+nav li a{
+text-decoration:none;
 color: white;
 padding: 20px;
-display: block;  
+display:block;
 }
 nav li{
 display:inline-block;
 text-align:center;
 ;
 }
-nav li:hover{
+nav li :hover{
 background: #ef8354;
 }
+header{
+  color: red;
+}
+section{
+  color: green;
+}
+footer{
+  color: blue;
+}
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
