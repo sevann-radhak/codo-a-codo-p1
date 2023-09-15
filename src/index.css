@@ -10,8 +10,8 @@ nav {
 list-style: none;
 padding: 0;
 background: #092327;
-width: 100%;
-max-width: 1000px;
+width: auto;
+max-width: auto;
 margin: auto;
 }
 nav li a{
@@ -42,3 +42,4 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
