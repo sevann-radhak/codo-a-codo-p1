@@ -1,0 +1,33 @@
+/* ResponsiveCard.css */
+.responsive-card {
+    display: flex;
+    flex-direction: column;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin: 16px;
+    padding: 16px;
+  }
+  
+  .responsive-card .image img {
+    max-width: 100%;
+    height: auto;
+  }
+  
+  .responsive-card h2 {
+    margin-top: 0;
+  }
+  
+  /* Media Query for Desktop */
+  @media (min-width: 768px) {
+    .responsive-card {
+      flex-direction: row;
+      background-color: red;
+    }
+  
+    .responsive-card .image {
+      flex: 1;
+      padding-right: 16px;
+    }
+  }
+  

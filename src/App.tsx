@@ -5,6 +5,7 @@ import Index from './components/Index';
 import Page2 from './components/Page2';
 import Page3 from './components/Page3';
 import Contact from './components/Contact';
+import Test from './components/test';
 
 const App: React.FC = () => {
   return (
@@ -17,13 +18,16 @@ const App: React.FC = () => {
               <a><Link to="/">Home</Link></a>
             </li>
             <li>
-            <a><Link to="/page2">Page 2</Link></a>
+              <a><Link to="/page2">Page 2</Link></a>
             </li>
             <li>
-            <a><Link to="/page3">Page 3</Link></a>
+              <a><Link to="/page3">Page 3</Link></a>
             </li>
             <li>
-            <a><Link to="/contact">Contact</Link></a>
+              <a><Link to="/contact">Contact</Link></a>
+            </li>
+            <li>
+              <a><Link to="/test">Test</Link></a>
             </li>
           </ul>
         </nav>
@@ -34,6 +38,7 @@ const App: React.FC = () => {
           <Route path="/page2" element={<Page2 />} />
           <Route path="/page3" element={<Page3 />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/test" element={<Test />} />
           <Route path="/" element={<Index />} />
         </Routes>
       </div>
