@@ -19,10 +19,10 @@
   }
   
   /* Media Query for Desktop */
-  @media (min-width: 768px) {
+  @media (min-width: 600px) {
     .responsive-card {
       flex-direction: row;
-      background-color: red;
+      background-color:green;
     }
   
     .responsive-card .image {
@@ -30,4 +30,28 @@
       padding-right: 16px;
     }
   }
+  @media (max-width:600px){
+    .responsive-card{
+      flex-direction: row;
+      background-color:red;
+    }
+  }
   
+  @media(min-width: 768px){
+    .responsive-card{
+      flex-direction: row;
+      background-color: blue;
+    }
+  }
+  @media(min-width: 992px){
+    .responsive-card{
+      flex-direction: row;
+      background-color: orange;
+    }
+  }
+  @media(min-width:1200px){
+    .responsive-card{
+      flex-direction: row;
+      background-color: pink;
+    }
+  }
