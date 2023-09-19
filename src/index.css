@@ -19,6 +19,8 @@ text-decoration:none;
 color: white;
 padding: 20px;
 display:block;
+text-decoration: underline;
+
 }
 nav li{
 display:inline-block;
@@ -26,8 +28,16 @@ text-align:center;
 ;
 }
 nav li :hover{
-background: #ef8354;
+background: #ef8354; 
+border:none;
+  color: black;
+  text-align: center;
+  font-size: 20px;
+  transition: 0.5s;
+  text-decoration: underline;
 }
+
+
 header{
   color: red;
 }
