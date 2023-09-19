@@ -6,45 +6,56 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-nav {
-list-style: none;
-padding: 0;
-background: #092327;
-width: 100%;
-max-width: 1000px;
-margin: auto;
-}
-nav li a{
-text-decoration:none;
-color: white;
-padding: 20px;
-display:block;
-text-decoration: underline;
 
+.container {
+  width: 70em;
+  border: 1px solid grey;
+  padding: 1em;
+  margin: 1em auto;
 }
-nav li{
-display:inline-block;
-text-align:center;
-;
+
+nav {
+  list-style: none;
+  padding: 0;
+  background: #092327;
+  width: 100%;
+  /* max-width: 1000px; */
+  margin: auto;
 }
-nav li :hover{
-background: #ef8354; 
-border:none;
-  color: black;
-  text-align: center;
-  font-size: 20px;
-  transition: 0.5s;
+
+nav li a {
+  text-decoration: none;
+  color: white;
+  padding: 20px;
+  display: block;
   text-decoration: underline;
 }
 
+nav li {
+  display: inline-block;
+  text-align: center;
+  ;
+}
 
-header{
+nav li :hover {
+  background: #ef8354;
+  border: none;
+  color: black;
+  text-align: center;
+  font-size: 20px;
+  transition: 1s;
+  text-decoration: underline;
+}
+
+header {
   color: red;
 }
-section{
+
+section {
   color: green;
 }
-footer{
+
+footer {
   color: blue;
 }
 
