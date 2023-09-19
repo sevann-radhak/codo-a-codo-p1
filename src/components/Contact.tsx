@@ -65,6 +65,7 @@ const Contact: React.FC = () => {
                 name="email"
                 value={formData.email}
                 onChange={handleInputChange}
+                required
               />
             </label>
           </div>
@@ -76,6 +77,7 @@ const Contact: React.FC = () => {
                 name="telefono"
                 value={formData.telefono}
                 onChange={handleInputChange}
+                required
               />
             </label>
           </div>
@@ -98,6 +100,7 @@ const Contact: React.FC = () => {
                 name="asunto"
                 value={formData.asunto}
                 onChange={handleInputChange}
+                required
               />
             </label>
           </div>
@@ -111,6 +114,7 @@ const Contact: React.FC = () => {
                 value={formData.mensaje}
                 onChange={handleInputChange}
                 placeholder="Escribe tu mensaje"
+                required
               />
             </label>
           </div>
