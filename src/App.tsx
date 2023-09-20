@@ -7,6 +7,8 @@ import Page3 from './components/Page3';
 import Contact from './components/Contact';
 import Test from './components/test';
 import Header from './components/Header';
+import Section from './components/Section';
+import Footer from './components/Footer';
 
 const App: React.FC = () => {
   return (
@@ -36,7 +38,7 @@ const App: React.FC = () => {
             </ul>
           </nav>
 
-          <section><h1>section</h1></section>
+          <section><Section/></section>
 
           <Routes>
             <Route path="/page2" element={<Page2 />} />
@@ -46,7 +48,7 @@ const App: React.FC = () => {
             <Route path="/" element={<Index />} />
           </Routes>
         </div>
-        <footer><h1>footer</h1></footer>
+        <footer><Footer/></footer>
       </Router>
     </div>
   );
