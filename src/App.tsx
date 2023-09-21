@@ -1,9 +1,8 @@
-// src/App.tsx
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import Index from './components/Index';
 import Page2 from './components/Page2';
-import Page3 from './components/Page3';
+import API from './components/API';
 import Contact from './components/Contact';
 import Test from './components/test';
 import Header from './components/Header';
@@ -25,7 +24,7 @@ const App: React.FC = () => {
                 </Link>
               </li>
               <li>
-                <Link to="/page3">Page 3</Link>
+                <Link to="/api">API</Link>
               </li>
               <li>
                 <Link to="/contact">Contact</Link>
@@ -40,7 +39,7 @@ const App: React.FC = () => {
 
           <Routes>
             <Route path="/page2" element={<Page2 />} />
-            <Route path="/page3" element={<Page3 />} />
+            <Route path="/api" element={<API />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/test" element={<Test />} />
             <Route path="/" element={<Index />} />
