@@ -1,12 +1,33 @@
-import React from 'react';
-import './../table.css';
+import React, { useState, useEffect } from 'react';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import albums from './../data/albums.json';
 import users from './../data/users.json';
+import './../modal.css';
+import './../table.css';
 
 const Album: React.FC = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedUser, setSelectedUser] = useState<any | null>(null);
+
+  const handleUserClick = (userId: number) => {
+    const user = users.find(u => u.id === userId);
+    setSelectedUser(user);
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
+
+  useEffect(() => {
+    if (selectedUser) {
+      setIsModalOpen(true);
+    }
+  }, [selectedUser]);
+
   return (
     <div>
-      <h1>Albums:</h1>
+      <h1>Album</h1>
       <p>Lista de album de usuarios:</p>
       <table>
         <thead>
@@ -17,15 +38,31 @@ const Album: React.FC = () => {
           </tr>
         </thead>
         <tbody>
-          {albums.map((album) => (
-            <tr key={album.id}>
-              <td>{album.id}</td>
-              <td>{users.find(u => u.id === album.userId)?.name}</td>
-              <td>{album.title}</td>
+          {albums.map((albumItem) => (
+            <tr key={albumItem.id}>
+              <td>{albumItem.id}</td>
+              <td>
+                <button className="btn btn-outline-info btn-sm" onClick={() => handleUserClick(albumItem.userId)}>
+                  {users.find(u => u.id === albumItem.userId)?.name}
+                </button>
+              </td>
+              <td>{albumItem.title}</td>
             </tr>
           ))}
         </tbody>
       </table>
+      {isModalOpen && selectedUser && (
+        <div className="modal" onClick={closeModal}>
+          <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+            <span className="close" onClick={closeModal}>
+              &times;
+            </span>
+            <h2>{selectedUser.name}</h2>
+            <p>Email: {selectedUser.email}</p>
+            <p>Teléfono: {selectedUser.phone}</p>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
