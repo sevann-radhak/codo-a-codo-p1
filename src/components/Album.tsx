@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import albums from './../data/albums.json';
 import users from './../data/users.json';
 import './../modal.css';
@@ -41,7 +42,7 @@ const Album: React.FC = () => {
             <tr key={albumItem.id}>
               <td>{albumItem.id}</td>
               <td>
-                <button onClick={() => handleUserClick(albumItem.userId)}>
+                <button className="btn btn-outline-info btn-sm" onClick={() => handleUserClick(albumItem.userId)}>
                   {users.find(u => u.id === albumItem.userId)?.name}
                 </button>
               </td>
