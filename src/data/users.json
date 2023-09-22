@@ -1,7 +1,4 @@
-import React from 'react';
-import './../table.css';
-
-const users = [
+[
     {
         "id": 1,
         "name": "Leanne Graham",
@@ -233,38 +230,3 @@ const users = [
         }
     }
 ]
-
-const API: React.FC = () => {
-    return (
-        <div>
-            <h1>API</h1>
-            <p>Lista de usuarios:</p>
-            <table>
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Name</th>
-                        <th>Username</th>
-                        <th>Email</th>
-                        <th>Phone</th>
-                        <th>Website</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {users.map((user) => (
-                        <tr key={user.id}>
-                            <td>{user.id}</td>
-                            <td>{user.name}</td>
-                            <td>{user.username}</td>
-                            <td>{user.email}</td>
-                            <td>{user.phone}</td>
-                            <td>{user.website}</td>
-                        </tr>
-                    ))}
-                </tbody>
-            </table>
-        </div>
-    );
-};
-
-export default API;
