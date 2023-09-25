@@ -33,94 +33,101 @@ const Contact: React.FC = () => {
         <p>Form submitted successfully! (:</p>
       ) : (
         <form onSubmit={handleSubmit}>
-          <div>
-            <label>
-              Nombre:
-              <input
-                type="text"
-                name="nombre"
-                value={formData.nombre}
-                onChange={handleInputChange}
-                required
-              />
-            </label>
+          <div className="form-group">
+            <label htmlFor="nombre">Nombre</label>
+            <input
+              type="text"
+              className="form-control"
+              id="nombre"
+              name="nombre"
+              aria-describedby="emailHelp"
+              placeholder="Ingrese su nombre"
+              required
+              value={formData.nombre}
+              onChange={handleInputChange} />
+          </div>
+          <div className="form-group">
+            <label htmlFor="apellido">Apellido</label>
+            <input
+              type="text"
+              className="form-control"
+              id="apellido"
+              name="apellido"
+              aria-describedby="emailHelp"
+              placeholder="Ingrese su apellido"
+              required
+              value={formData.apellido}
+              onChange={handleInputChange} />
+          </div>
+          <div className="form-group">
+            <label htmlFor="email">Email</label>
+            <input
+              type="text"
+              className="form-control"
+              id="email"
+              name="email"
+              aria-describedby="emailHelp"
+              placeholder="Ingrese su email"
+              required
+              value={formData.email}
+              onChange={handleInputChange} />
+          </div>
+          <div className="form-group">
+            <label htmlFor="telefono">telefono</label>
+            <input
+              type="text"
+              className="form-control"
+              id="telefono"
+              name="telefono"
+              aria-describedby="emailHelp"
+              placeholder="Ingrese su telefono"
+              required
+              value={formData.telefono}
+              onChange={handleInputChange} />
+          </div>
+          <div className="form-group">
+            <label htmlFor="sitio web">Sitio web</label>
+            <input
+              type="text"
+              className="form-control"
+              id="sitio web"
+              name="sitio web"
+              aria-describedby="emailHelp"
+              placeholder="Ingrese su sitio web"
+              value={formData.sitioWeb}
+              onChange={handleInputChange} />
+          </div>
+          <div className="form-group">
+            <label htmlFor="asunto">Asunto</label>
+            <input
+              type="text"
+              className="form-control"
+              id="asunto"
+              name="asunto"
+              aria-describedby="emailHelp"
+              placeholder="Ingrese su asunto"
+              required
+              value={formData.asunto}
+              onChange={handleInputChange} />
+          </div>
+          <div className="form-group">
+            <label htmlFor="mensaje">Mensaje</label>
+            <input
+              type="text"
+              className="form-control"
+              id="mensaje"
+              name="mensaje"
+              aria-describedby="emailHelp"
+              placeholder="Ingrese su mensaje"
+              required
+              value={formData.mensaje}
+              onChange={handleInputChange} />
           </div>
           <div>
-            <label>
-              Apellido:
-              <input
-                type="text"
-                name="apellido"
-                value={formData.apellido}
-                onChange={handleInputChange}
-                required
-              />
-            </label>
+            
           </div>
-          <div>
-            <label>
-              Email:
-              <input
-                type="email"
-                name="email"
-                value={formData.email}
-                onChange={handleInputChange}
-                required
-              />
-            </label>
-          </div>
-          <div>
-            <label>
-              Telefono:
-              <input
-                type="number"
-                name="telefono"
-                value={formData.telefono}
-                onChange={handleInputChange}
-                required
-              />
-            </label>
-          </div>
-          <div>
-            <label>
-              Sitio Web:
-              <input
-                type="text"
-                name="sitioWeb"
-                value={formData.sitioWeb}
-                onChange={handleInputChange}
-              />
-            </label>
-          </div>
-          <div>
-            <label>
-              Asunto:
-              <input
-                type="text"
-                name="asunto"
-                value={formData.asunto}
-                onChange={handleInputChange}
-                required
-              />
-            </label>
-          </div>
-          <div>
-            <label>
-              Mensaje:
-              <textarea
-                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                id="message"
-                name="mensaje"
-                value={formData.mensaje}
-                onChange={handleInputChange}
-                placeholder="Escribe tu mensaje"
-                required
-              />
-            </label>
-          </div>
-          <button type="submit" name="enviar_formulario" id="enviar">
-            <p>Enviar</p>
-          </button>
+          <button type="submit" className="btn btn-outline-primary">Enviar</button>
+          <button type="reset" className="btn btn-outline-secondary">Borrar</button>
         </form>
       )}
     </div>
