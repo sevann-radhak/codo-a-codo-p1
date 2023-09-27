@@ -1,8 +1,34 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import './../table.css';
-import users from './../data/users.json';
 
 const Users: React.FC = () => {
+    const [users, setUsers] = useState([{
+        id: 0,
+        name: '',
+        username: '',
+        email: '',
+        website: '',
+        phone: ''
+    }]);
+
+    useEffect(() => {
+        fetch('https://jsonplaceholder.typicode.com/users')
+            .then(response => {
+                if (!response.ok) {
+                    console.error('Network response was not ok.');
+                }
+                return response.json();
+            })
+            .then(data => {
+                // Handle the JSON data here
+                console.log(data);
+                setUsers(data);
+            })
+            .catch(error => {
+                console.error('Fetch error:', error);
+            });
+    }, []);
+
     return (
         <div>
             <h1>Usuarios:</h1>

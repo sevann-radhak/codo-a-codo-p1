@@ -7,11 +7,22 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-.container {
+.my_container {
   width: 70em;
   border: 1px solid grey;
   padding: 1em;
   margin: 1em auto;
+}
+
+.buttons {
+  width: 100%;
+  padding: 1em;
+  margin: 1em auto;
+  text-align: center;
+}
+
+.ml-2 {
+  margin-left: 2em;
 }
 
 nav {
