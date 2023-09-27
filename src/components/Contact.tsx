@@ -8,7 +8,7 @@ const Contact: React.FC = () => {
     telefono: '',
     sitioWeb: '',
     asunto: '',
-    mensaje: '',
+    mensaje: ''
   });
 
   const [formSubmitted, setFormSubmitted] = useState(false);
@@ -26,110 +26,126 @@ const Contact: React.FC = () => {
     setFormSubmitted(true);
   };
 
+  const handleReset = (e: React.FormEvent) => {
+    e.preventDefault();
+    setFormData({
+      ...formData,
+      nombre: '',
+      apellido: '',
+      email: '',
+      telefono: '',
+      sitioWeb: '',
+      asunto: '',
+      mensaje: ''
+    });
+  };
+
   return (
     <div>
       <h1>Contact</h1>
-      {formSubmitted ? (
-        <p>Form submitted successfully! (:</p>
-      ) : (
-        <form onSubmit={handleSubmit}>
-          <div className="form-group">
-            <label htmlFor="nombre">Nombre</label>
-            <input
-              type="text"
-              className="form-control"
-              id="nombre"
-              name="nombre"
-              aria-describedby="emailHelp"
-              placeholder="Ingrese su nombre"
-              required
-              value={formData.nombre}
-              onChange={handleInputChange} />
-          </div>
-          <div className="form-group">
-            <label htmlFor="apellido">Apellido</label>
-            <input
-              type="text"
-              className="form-control"
-              id="apellido"
-              name="apellido"
-              aria-describedby="emailHelp"
-              placeholder="Ingrese su apellido"
-              required
-              value={formData.apellido}
-              onChange={handleInputChange} />
-          </div>
-          <div className="form-group">
-            <label htmlFor="email">Email</label>
-            <input
-              type="text"
-              className="form-control"
-              id="email"
-              name="email"
-              aria-describedby="emailHelp"
-              placeholder="Ingrese su email"
-              required
-              value={formData.email}
-              onChange={handleInputChange} />
-          </div>
-          <div className="form-group">
-            <label htmlFor="telefono">telefono</label>
-            <input
-              type="text"
-              className="form-control"
-              id="telefono"
-              name="telefono"
-              aria-describedby="emailHelp"
-              placeholder="Ingrese su telefono"
-              required
-              value={formData.telefono}
-              onChange={handleInputChange} />
-          </div>
-          <div className="form-group">
-            <label htmlFor="sitioWeb">Sitio web</label>
-            <input
-              type="text"
-              className="form-control"
-              id="sitioWeb"
-              name="sitioWeb"
-              aria-describedby="emailHelp"
-              placeholder="Ingrese su sitio web"
-              value={formData.sitioWeb}
-              onChange={handleInputChange} />
-          </div>
-          <div className="form-group">
-            <label htmlFor="asunto">Asunto</label>
-            <input
-              type="text"
-              className="form-control"
-              id="asunto"
-              name="asunto"
-              aria-describedby="emailHelp"
-              placeholder="Ingrese su asunto"
-              required
-              value={formData.asunto}
-              onChange={handleInputChange} />
-          </div>
-          <div className="form-group">
-            <label htmlFor="mensaje">Mensaje</label>
-            <input
-              type="text"
-              className="form-control"
-              id="mensaje"
-              name="mensaje"
-              aria-describedby="emailHelp"
-              placeholder="Ingrese su mensaje"
-              required
-              value={formData.mensaje}
-              onChange={handleInputChange} />
-          </div>
-          <div>
-            
-          </div>
-          <button type="submit" className="btn btn-outline-primary">Enviar</button>
-          <button type="reset" className="btn btn-outline-secondary">Borrar</button>
-        </form>
-      )}
+      {formSubmitted
+        ? (<p>Formulario enviado con exito!</p>)
+        : (
+          <form onSubmit={handleSubmit}>
+            <div className="form-group">
+              <label htmlFor="nombre">Nombre</label>
+              <input
+                type="text"
+                className="form-control"
+                id="nombre"
+                name="nombre"
+                aria-describedby="emailHelp"
+                placeholder="Ingrese su nombre"
+                required
+                value={formData.nombre}
+                onChange={handleInputChange} />
+            </div>
+            <div className="form-group">
+              <label htmlFor="apellido">Apellido</label>
+              <input
+                type="text"
+                className="form-control"
+                id="apellido"
+                name="apellido"
+                aria-describedby="emailHelp"
+                placeholder="Ingrese su apellido"
+                required
+                value={formData.apellido}
+                onChange={handleInputChange} />
+            </div>
+            <div className="form-group">
+              <label htmlFor="email">Email</label>
+              <input
+                type="text"
+                className="form-control"
+                id="email"
+                name="email"
+                aria-describedby="emailHelp"
+                placeholder="Ingrese su email"
+                required
+                value={formData.email}
+                onChange={handleInputChange} />
+            </div>
+            <div className="form-group">
+              <label htmlFor="telefono">telefono</label>
+              <input
+                type="text"
+                className="form-control"
+                id="telefono"
+                name="telefono"
+                aria-describedby="emailHelp"
+                placeholder="Ingrese su telefono"
+                required
+                value={formData.telefono}
+                onChange={handleInputChange} />
+            </div>
+            <div className="form-group">
+              <label htmlFor="sitioWeb">Sitio web</label>
+              <input
+                type="text"
+                className="form-control"
+                id="sitioWeb"
+                name="sitioWeb"
+                aria-describedby="emailHelp"
+                placeholder="Ingrese su sitio web"
+                value={formData.sitioWeb}
+                onChange={handleInputChange} />
+            </div>
+            <div className="form-group">
+              <label htmlFor="asunto">Asunto</label>
+              <input
+                type="text"
+                className="form-control"
+                id="asunto"
+                name="asunto"
+                aria-describedby="emailHelp"
+                placeholder="Ingrese su asunto"
+                required
+                value={formData.asunto}
+                onChange={handleInputChange} />
+            </div>
+            <div className="form-group">
+              <label htmlFor="mensaje">Mensaje</label>
+              <input
+                type="text"
+                className="form-control"
+                id="mensaje"
+                name="mensaje"
+                aria-describedby="emailHelp"
+                placeholder="Ingrese su mensaje"
+                required
+                value={formData.mensaje}
+                onChange={handleInputChange} />
+            </div>
+            <div>
+            </div>
+
+            <div className='buttons'>
+              <button type="submit" className="btn btn-outline-primary">Enviar</button>
+              <button type="button" className="btn btn-outline-secondary ml-2" onClick={handleReset}>Borrar</button>
+            </div>
+          </form>
+        )}
     </div>
   );
 };
