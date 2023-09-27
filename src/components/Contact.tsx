@@ -86,12 +86,12 @@ const Contact: React.FC = () => {
               onChange={handleInputChange} />
           </div>
           <div className="form-group">
-            <label htmlFor="sitio web">Sitio web</label>
+            <label htmlFor="sitioWeb">Sitio web</label>
             <input
               type="text"
               className="form-control"
-              id="sitio web"
-              name="sitio web"
+              id="sitioWeb"
+              name="sitioWeb"
               aria-describedby="emailHelp"
               placeholder="Ingrese su sitio web"
               value={formData.sitioWeb}
