@@ -6,6 +6,30 @@ import './../modal.css';
 import './../table.css';
 
 const Album: React.FC = () => {
+  const [albums, setAlbums] = useState([{
+    userId: 0,
+    id: '',
+    title: '',
+  }])
+
+  useEffect(() => {
+    fetch('https://jsonplaceholder.typicode.com/albums')
+      .then(response => {
+        if (!response.ok) {
+          console.error('Network response was not ok.');
+        }
+        return response.json();
+      })
+      .then(data => {
+        // Handle the JSON data here
+        console.log(data);
+        setAlbums(data);
+      })
+      .catch(error => {
+        console.error('Fetch error:', error);
+      });
+  }, []);
+
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedUser, setSelectedUser] = useState<any | null>(null);
 
