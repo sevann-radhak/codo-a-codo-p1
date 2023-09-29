@@ -39,6 +39,7 @@ const Users: React.FC = () => {
         setFormSubmitted(true);
         closeModal();
         setShowSuccessMessage(true);
+        handleReset();
     };
 
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -59,8 +60,7 @@ const Users: React.FC = () => {
         setIsModalOpen(false);
     };
 
-    const handleReset = (e: React.FormEvent) => {
-        e.preventDefault();
+    const handleReset = () => {
         setFormData({
             ...formData,
             name: '',
@@ -109,10 +109,10 @@ const Users: React.FC = () => {
             <div style={{ float: 'right', textAlign: 'right' }}>
                 {showSuccessMessage && (
                     <div className="alert alert-success" role="alert" style={{ float: 'left', fontSize: '12px' }}>
-                        Usuario agregado con exito!
+                        Nuevo Usuario agregado con exito!
                     </div>
                 )}
-                <button type="button" style={{ float: 'right' }} className="btn btn-primary btn-sm ml-2" onClick={handleUserClick}>Agregar</button>
+                <button type="button" style={{ float: 'right' }} className="btn btn-primary btn-sm ml-2" onClick={handleUserClick}>Nuevo</button>
 
             </div>
             <table>
