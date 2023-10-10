@@ -4,11 +4,18 @@ import albums from './../data/albums.json';
 import users from './../data/users.json';
 import './../modal.css';
 import './../table.css';
+import { Link } from 'react-router-dom'; // Import Link
+
+interface AlbumData {
+  id: number;
+  title: string;
+  url: string;
+}
 
 const Album: React.FC = () => {
   const [albums, setAlbums] = useState([{
     userId: 0,
-    id: '',
+    id: 0,
     title: '',
   }])
 
@@ -43,6 +50,10 @@ const Album: React.FC = () => {
     setIsModalOpen(false);
   };
 
+  const goToAlbumSingle = (id: number) => {
+    window.location.href = `./Album/${id}`;
+  }
+
   useEffect(() => {
     if (selectedUser) {
       setIsModalOpen(true);
@@ -59,9 +70,11 @@ const Album: React.FC = () => {
             <th>Id</th>
             <th>Usuario</th>
             <th>Title</th>
+            <th></th>
           </tr>
         </thead>
         <tbody>
+
           {albums.map((albumItem) => (
             <tr key={albumItem.id}>
               <td>{albumItem.id}</td>
@@ -71,6 +84,11 @@ const Album: React.FC = () => {
                 </button>
               </td>
               <td>{albumItem.title}</td>
+
+              <td>
+                <Link to={`/Album/${albumItem.id}`} className='btn btn-sm btn-info'>Ver</Link>
+                {/* <button className='btn btn-sm btn-info' onClick={() => goToAlbumSingle(albumItem.id)}>Ver</button> */}
+              </td>
             </tr>
           ))}
         </tbody>

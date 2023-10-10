@@ -9,7 +9,9 @@ const root = ReactDOM.createRoot(
 );
 root.render(
   <React.StrictMode>
-    <App />
+    <div className="responsive-card">
+      <App />
+    </div>
   </React.StrictMode>
 );
 

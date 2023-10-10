@@ -1,10 +1,31 @@
 import React from 'react';
+import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 
 const Header: React.FC = () => {
     return (
-        <div>
-            <h1>This is the Header!</h1>
-        </div>
+        <nav>
+            <ul>
+                <li>
+                    <Link to="/">Inicio</Link>
+                </li>
+                <li>
+                    <Link to="/users">
+                        Usuarios
+                    </Link>
+                </li>
+                <li>
+                    <Link to="/Album">
+                        Albumes
+                    </Link>
+                </li>
+                <li>
+                    <Link to="/contact">Contacto</Link>
+                </li>
+                <li>
+                    <Link to="/test">Responsive</Link>
+                </li>
+            </ul>
+        </nav>
     );
 };
 
