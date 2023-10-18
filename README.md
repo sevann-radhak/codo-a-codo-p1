@@ -1,3 +1,8 @@
+This project has been done for Codo-a-codo course (23501) by group 21: 
+- Valentin Moriena.
+- Felipe Moriena.
+- Sevann Radhak.
+  
 To run this app locallly, run these steps in your terminal once you have cloned this repository.
 
 ### `npm intall`
