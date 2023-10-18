@@ -1,4 +1,5 @@
-To run this app locallly, run this steps in your terminal
+To run this app locallly, run these steps in your terminal once you have cloned this repository.
+
 ### `npm intall`
 
 ### `npm start`
