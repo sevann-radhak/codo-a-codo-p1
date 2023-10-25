@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import albums from './../data/albums.json';
 import users from './../data/users.json';
 import './../modal.css';
 import './../table.css';

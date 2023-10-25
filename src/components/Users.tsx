@@ -104,7 +104,7 @@ const Users: React.FC = () => {
     }, []);
 
     return (
-        <div>
+        <div className='container'>
             <h1 style={{ float: 'left', textAlign: 'left' }}>Usuarios:</h1>
             <div style={{ float: 'right', textAlign: 'right' }}>
                 {showSuccessMessage && (
@@ -113,30 +113,33 @@ const Users: React.FC = () => {
                     </div>
                 )}
                 <button type="button" style={{ float: 'right' }} className="btn btn-primary btn-sm ml-2" onClick={handleUserClick}>Nuevo</button>
-
             </div>
-            <table>
-                <thead>
-                    <tr>
+
+            <br />
+            <br />
+
+            <div className="table-responsive table-container" style={{ marginTop: '1em' }}>
+                <table className="table table-bordered user-table">
+                    <thead>
                         <th>Nombre</th>
                         <th>Usuario</th>
                         <th>Email</th>
                         <th>Telefono</th>
                         <th>Sitio Web</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {users.map((user) => (
-                        <tr key={user.id}>
-                            <td>{user.name}</td>
-                            <td>{user.username}</td>
-                            <td>{user.email}</td>
-                            <td>{user.phone}</td>
-                            <td>{user.website}</td>
-                        </tr>
-                    ))}
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody>
+                        {users.map((user) => (
+                            <tr key={user.id}>
+                                <td>{user.name}</td>
+                                <td>{user.username}</td>
+                                <td>{user.email}</td>
+                                <td>{user.phone}</td>
+                                <td>{user.website}</td>
+                            </tr>
+                        ))}
+                    </tbody>
+                </table>
+            </div>
 
             {isModalOpen &&
                 (
