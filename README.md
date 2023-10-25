@@ -1,10 +1,11 @@
-# Getting Started with Create React App
+This project has been done for Codo-a-codo course (23501) by group 21: 
+- Valentin Moriena.
+- Felipe Moriena.
+- Sevann Radhak.
+  
+To run this app locallly, run these steps in your terminal once you have cloned this repository.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
-## Available Scripts
-
-In the project directory, you can run:
+### `npm intall`
 
 ### `npm start`
 
