@@ -7,7 +7,6 @@ import Contact from './components/Contact';
 import Test from './components/test';
 import Header from './components/Header';
 import AlbumSigle from './components/AlbumSigle';
-import ParentChildDivs from './components/table-example';
 
 const App: React.FC = () => {
   return (
@@ -16,7 +15,6 @@ const App: React.FC = () => {
         <Router>
           <div>
             <header><Header /></header>
-            {/* <section><Section /></section> */}
 
             <Routes>
               <Route path="/Album" element={<Album />} />
@@ -25,7 +23,6 @@ const App: React.FC = () => {
               <Route path="/contact" element={<Contact />} />
               <Route path="/test" element={<Test />} />
               <Route path="/" element={<Index />} />
-              <Route path="/ParentChildDivs" element={<ParentChildDivs />} />
 
             </Routes>
           </div>
