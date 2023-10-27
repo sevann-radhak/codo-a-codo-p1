@@ -121,11 +121,13 @@ const Users: React.FC = () => {
             <div className="table-responsive table-container" style={{ marginTop: '1em' }}>
                 <table className="table table-bordered user-table">
                     <thead>
-                        <th>Nombre</th>
-                        <th>Usuario</th>
-                        <th>Email</th>
-                        <th>Telefono</th>
-                        <th>Sitio Web</th>
+                        <tr>
+                            <th>Nombre</th>
+                            <th>Usuario</th>
+                            <th>Email</th>
+                            <th>Telefono</th>
+                            <th>Sitio Web</th>
+                        </tr>
                     </thead>
                     <tbody>
                         {users.map((user) => (

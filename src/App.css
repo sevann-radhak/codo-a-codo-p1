@@ -76,6 +76,5 @@
 @media(min-width:1200px) {
   .responsive-card {
     flex-direction: row;
-    background-color: pink;
   }
 }

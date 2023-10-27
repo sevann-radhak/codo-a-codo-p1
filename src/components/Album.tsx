@@ -27,8 +27,6 @@ const Album: React.FC = () => {
         return response.json();
       })
       .then(data => {
-        // Handle the JSON data here
-        console.log(data);
         setAlbums(data);
       })
       .catch(error => {
@@ -63,35 +61,37 @@ const Album: React.FC = () => {
     <div>
       <h1>Album</h1>
       <p>Lista de album de usuarios:</p>
-      <table>
-        <thead>
-          <tr>
-            <th>Id</th>
-            <th>Usuario</th>
-            <th>Title</th>
-            <th></th>
-          </tr>
-        </thead>
-        <tbody>
-
-          {albums.map((albumItem) => (
-            <tr key={albumItem.id}>
-              <td>{albumItem.id}</td>
-              <td>
-                <button className="btn btn-outline-info btn-sm" onClick={() => handleUserClick(albumItem.userId)}>
-                  {users.find(u => u.id === albumItem.userId)?.name}
-                </button>
-              </td>
-              <td>{albumItem.title}</td>
-
-              <td>
-                <Link to={`/Album/${albumItem.id}`} className='btn btn-sm btn-info'>Ver</Link>
-                {/* <button className='btn btn-sm btn-info' onClick={() => goToAlbumSingle(albumItem.id)}>Ver</button> */}
-              </td>
+      <div className="table-responsive table-container" style={{ marginTop: '1em' }}>
+        <table className="table table-bordered user-table">
+          <thead>
+            <tr>
+              <th>Id</th>
+              <th>Usuario</th>
+              <th>Title</th>
+              <th></th>
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+
+            {albums.map((albumItem) => (
+              <tr key={albumItem.id}>
+                <td>{albumItem.id}</td>
+                <td>
+                  <button className="btn btn-outline-info btn-sm" onClick={() => handleUserClick(albumItem.userId)}>
+                    {users.find(u => u.id === albumItem.userId)?.name}
+                  </button>
+                </td>
+                <td>{albumItem.title}</td>
+
+                <td>
+                  <Link to={`/Album/${albumItem.id}`} className='btn btn-sm btn-info'>Ver</Link>
+                  {/* <button className='btn btn-sm btn-info' onClick={() => goToAlbumSingle(albumItem.id)}>Ver</button> */}
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
       {isModalOpen && selectedUser && (
         <div className="modal" onClick={closeModal}>
           <div className="modal-content" onClick={(e) => e.stopPropagation()}>
