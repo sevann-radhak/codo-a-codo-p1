@@ -9,12 +9,10 @@ import Header from './components/Header';
 import AlbumSigle from './components/AlbumSigle';
 
 const App: React.FC = () => {
-
-
-  const iconSize = '2x'; // You can adjust the size as needed
-  const iconColor = '#007bff'; // Replace with your desired icon color
+  const iconSize = '2x';
+  const iconColor = '#007bff';
   const textFontStyle = {
-    fontFamily: 'Arial, sans-serif', // Replace with your desired font
+    fontFamily: 'Arial, sans-serif',
   };
 
   return (
