@@ -65,7 +65,16 @@ class Formulario:
         self.cursor.execute(sql, valores)
         self.conn.commit()
         return self.cursor.rowcount > 0
+    
+    def eliminar_mensaje(self, id):
+        self.cursor.execute(f"DELETE FROM mensajes WHERE id = {id}")
+        self.conn.commit()
+        return self.cursor.rowcount > 0
+    
+    def mostrar_mensaje(self,id):
+        sql = f"SELECT id, nombre, apellido, telefono, email, mensaje, fecha_envio, leido, gestion, fecha_gestion, FROM mensajes WHERE id = {id}"
+        self.cursor.execute(sql)
+        return self.cursor.fetchone()
        
- 
             
 formulario = Formulario("localhost", "root", "", "formulario")
