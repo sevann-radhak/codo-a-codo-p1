@@ -1,6 +1,9 @@
+import dataclasses
 from flask import Flask, request, jsonify
 from flask_cors import CORS
 import mysql.connector
+conexion = mysql.connector.connect(user='root', password='root', host='localhost', database='formulario', port='3306') 
+print(conexion)
 import datetime
 
 
@@ -50,16 +53,21 @@ class Formulario:
     #     self.cursor = self.conn.cursor(dictionary=True)
  
  # paso 2 descomentar este metodo y conectar con el del paso 1
+ class Formulario:
  
-    # def enviar_mensaje(self, nombre, apellido, telefono, email):
-    #     sql = "INSERT INTO  mensajes(nombre, apellido, telefono, email, mensaje, fecha_envio)"
-    #     fecha_envio = datetime.datetime.now()
-    #     valores = (nombre, apellido, telefono, email, fecha_envio)
+    def procesar_formulario(self, data):
+        # Procesar los datos y luego llamar a enviar_mensaje
+        self.enviar_mensaje(data['nombre'], data['apellido'], data['telefono'], data['email'])
+ 
+    def enviar_mensaje(self, nombre, apellido, telefono, email):
+        sql = "INSERT INTO  mensajes(nombre, apellido, telefono, email, mensaje, fecha_envio)"
+        fecha_envio = datetime.datetime.now()
+        valores = (nombre, apellido, telefono, email, fecha_envio)
         
         #paso 4: verificar que este metodo funcione y que el registro quede guardado en la bbddd
-    #     self.cursor.execute(sql, valores)
-    #     self.conn.commit()
-    #     return True
+        self.cursor.execute(sql, valores)
+        self.conn.commit()
+        return True
     
     # def listar_mensajes(self):
     #     self.cursor.execute("SELECT * FROM formulario")
@@ -86,21 +94,23 @@ class Formulario:
     #     return self.cursor.fetchone()
        
             
-    def enviar_mensaje(self, nombre, apellido, telefono, email):
-        print(nombre, apellido, telefono, email)
-        return True
+        def enviar_mensaje(self, nombre, apellido, telefono, email):
+         print(nombre, apellido, telefono, email)
+         return True
     
     
 # paso 3 descomentar siguiente linea, comentar la que le sigue
-# formulario = Formulario("localhost", "root", "", "formulario")
-formulario = Formulario()
+formulario = Formulario("localhost", "root", "", "formulario")
+# formulario = Formulario()
+data={}
+formulario.procesar_formulario(data)
 
 @app.route('/enviar_mensaje', methods=['POST'])
 def recibir_mensaje():
     data = request.get_json()
     print(data)
     #paso 1 descomentar siguiente linea
-    #formulario.enviar_mensaje(data['nombre'], data['apellido'], data['telefono'], data['email'])
+    formulario.enviar_mensaje(data['nombre'], data['apellido'], data['telefono'], data['email'])
     return jsonify({'success': True})
 
 if __name__ == '__main__':
