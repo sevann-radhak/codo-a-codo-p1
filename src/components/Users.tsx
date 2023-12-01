@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import './../table.css';
 
 const Users: React.FC = () => {
@@ -22,24 +23,44 @@ const Users: React.FC = () => {
 
     const [formSubmitted, setFormSubmitted] = useState(false);
 
-    const handleSubmit = (e: React.FormEvent) => {
+    const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
 
         const maxId = Math.max(...users.map((user) => user.id)) + 1;
-        const newUsers = [...users, {
+        const newUser = {
             id: maxId,
             name: formData.name,
             username: formData.username,
             email: formData.email,
             website: formData.website,
             phone: formData.phone
-        }];
+        };
+
+        const newUsers = [...users, newUser];
 
         setUsers(newUsers);
         setFormSubmitted(true);
         closeModal();
         setShowSuccessMessage(true);
         handleReset();
+
+        try {
+            const response = await fetch('http://127.0.0.1:5000/enviar_mensaje', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(newUser),
+            });
+
+            if (response.ok) {
+                setUsers(newUsers);
+            } else {
+                throw new Error('Failed to add user');
+            }
+        } catch (error) {
+            console.error('Error adding user:', error);
+        }
     };
 
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
