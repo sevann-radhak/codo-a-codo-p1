@@ -2,7 +2,7 @@ import dataclasses
 from flask import Flask, request, jsonify
 from flask_cors import CORS
 import mysql.connector
-conexion = mysql.connector.connect(user='root', password='root', host='localhost', database='formulario', port='3306') 
+conexion = mysql.connector.connect(user='root', password='', host='localhost', database='formulario', port='3306') 
 print(conexion)
 import datetime
 
@@ -13,56 +13,55 @@ CORS(app)
 #paso 5: que todos los demas metodos funcionen
 class Formulario:
     
-    # def __init__(self, host, user, password, database):
-    #     self.conn = mysql.connector.connect(
-    #         host=host,
-    #         user=user,
-    #         password=password
-    #     )
+    def __init__(self, host, user, password, database):
+        self.conn = mysql.connector.connect(
+            host=host,
+            user=user,
+            password=password
+        )
         
-    #     self.cursor = self.conn.cursor()
+        self.cursor = self.conn.cursor()
         
-    #     try:
-    #         self.cursor.execute(f"USE{database}")
-    #     except mysql.connector.Error as err:
-    #         if err.errno == mysql.connector.errorcode.ER_BAD_DB_ERRROR:
-    #             self.cursor.execute(f"CREATE DATABASE {database}")
-    #             self.conn.database = database
-    #         else:
-    #             raise err
+        try:
+            self.cursor.execute(f"USE {database}")
+        except mysql.connector.Error as err:
+            if err.errno == mysql.connector.Error.DB_CREATE_EXISTS:
+                self.cursor.execute(f"CREATE DATABASE {database}")
+                self.conn.database = database
+            else:
+                raise err
             
  
-    #     self.cursor.execute('''CREATE TABLE IF NOT EXISTS formulario (
-    #         id int(11) NOT NULL AUTO_INCREMENT,
-    #         nombre varchar (30) NOT NULL,
-    #         apellido varchar(30) NOT NULL,
-    #         telefono varchar (15) NOT NULL,
-    #         email varchar (60) NOT NULL,
-    #         mensaje varchar (500) NOT NULL,
-    #         fecha_envio datetime NOT NULL,
-    #         leido tinyint(1) NOT NULL,
-    #         gestion varchar (500) DEFAULT NULL,
-    #         fecha_gestion datetime DEFAULT NULL,
-    #         PRIMARY KEY ('id')
-    #         )ENGINE=InnoDB DEFAULT CHARSET=uft8 COLLATE=uft8_spanish_ci;
-    #         ''')
+        # self.cursor.execute('''CREATE TABLE IF NOT EXISTS formulario (
+        #     id int(11) NOT NULL AUTO_INCREMENT,
+        #     nombre varchar (30) NOT NULL,
+        #     apellido varchar(30) NOT NULL,
+        #     telefono varchar (15) NOT NULL,
+        #     email varchar (60) NOT NULL,
+        #     mensaje varchar (500) NOT NULL,
+        #     fecha_envio datetime NOT NULL,
+        #     leido tinyint(1) NOT NULL,
+        #     gestion varchar (500) DEFAULT NULL,
+        #     fecha_gestion datetime DEFAULT NULL,
+        #     PRIMARY KEY ('id')
+        #     )ENGINE=InnoDB DEFAULT CHARSET=uft8 COLLATE=uft8_spanish_ci;
+        #     ''')
         
-    #     self.conn.commit()
+        self.conn.commit()
         
-    #     self.cursor.close()
-    #     self.cursor = self.conn.cursor(dictionary=True)
+        self.cursor.close()
+        self.cursor = self.conn.cursor(dictionary=True)
  
  # paso 2 descomentar este metodo y conectar con el del paso 1
- class Formulario:
  
     def procesar_formulario(self, data):
         # Procesar los datos y luego llamar a enviar_mensaje
         self.enviar_mensaje(data['nombre'], data['apellido'], data['telefono'], data['email'])
  
-    def enviar_mensaje(self, nombre, apellido, telefono, email):
-        sql = "INSERT INTO  mensajes(nombre, apellido, telefono, email, mensaje, fecha_envio)"
+    def enviar_mensaje(self, name, username, email, website, phone):
+        sql = "INSERT INTO  usuarios(name, username, email, website, phone) VALUES (%s, %s, %s, %s, %s)"
         fecha_envio = datetime.datetime.now()
-        valores = (nombre, apellido, telefono, email, fecha_envio)
+        valores = (name, username, email, website, phone)
         
         #paso 4: verificar que este metodo funcione y que el registro quede guardado en la bbddd
         self.cursor.execute(sql, valores)
@@ -94,24 +93,26 @@ class Formulario:
     #     return self.cursor.fetchone()
        
             
-        def enviar_mensaje(self, nombre, apellido, telefono, email):
-         print(nombre, apellido, telefono, email)
-         return True
+    #     def enviar_mensaje(self, nombre, apellido, telefono, email):
+    #      print(nombre, apellido, telefono, email)
+    #      return True
     
     
 # paso 3 descomentar siguiente linea, comentar la que le sigue
 formulario = Formulario("localhost", "root", "", "formulario")
 # formulario = Formulario()
-data={}
-formulario.procesar_formulario(data)
+# data={}
+# formulario.procesar_formulario(data)
 
 @app.route('/enviar_mensaje', methods=['POST'])
 def recibir_mensaje():
     data = request.get_json()
     print(data)
+    print(data['name'])
     #paso 1 descomentar siguiente linea
-    formulario.enviar_mensaje(data['nombre'], data['apellido'], data['telefono'], data['email'])
+    formulario.enviar_mensaje(data['name'], data['username'], data['email'], data['website'], data['phone'])
     return jsonify({'success': True})
+
 
 if __name__ == '__main__':
     app.run(debug=True)
