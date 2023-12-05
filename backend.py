@@ -32,20 +32,16 @@ class Formulario:
                 raise err
             
  
-        # self.cursor.execute('''CREATE TABLE IF NOT EXISTS formulario (
-        #     id int(11) NOT NULL AUTO_INCREMENT,
-        #     nombre varchar (30) NOT NULL,
-        #     apellido varchar(30) NOT NULL,
-        #     telefono varchar (15) NOT NULL,
-        #     email varchar (60) NOT NULL,
-        #     mensaje varchar (500) NOT NULL,
-        #     fecha_envio datetime NOT NULL,
-        #     leido tinyint(1) NOT NULL,
-        #     gestion varchar (500) DEFAULT NULL,
-        #     fecha_gestion datetime DEFAULT NULL,
-        #     PRIMARY KEY ('id')
-        #     )ENGINE=InnoDB DEFAULT CHARSET=uft8 COLLATE=uft8_spanish_ci;
-        #     ''')
+        self.cursor.execute('''CREATE TABLE IF NOT EXISTS usuarios (
+             id int(11) NOT NULL AUTO_INCREMENT,
+             name varchar (30) NOT NULL,
+             username varchar(30) NOT NULL,
+             email varchar (15) NOT NULL,
+             website varchar (60) NOT NULL,
+             phone varchar (500) NOT NULL,
+             PRIMARY KEY ('id')
+             )ENGINE=InnoDB DEFAULT CHARSET=uft8 COLLATE=uft8_spanish_ci;
+             ''')
         
         self.conn.commit()
         
