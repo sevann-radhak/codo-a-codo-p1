@@ -2,8 +2,6 @@ import dataclasses
 from flask import Flask, request, jsonify
 from flask_cors import CORS
 import mysql.connector
-conexion = mysql.connector.connect(host='localhost', user='root', password='') 
-print(conexion)
 import datetime
 
 
@@ -33,13 +31,13 @@ class Formulario:
             
  
         self.cursor.execute('''CREATE TABLE IF NOT EXISTS usuarios (
-             `id` int(11) NOT NULL AUTO_INCREMENT,
-             `name` varchar (30) NOT NULL,
-             `username` varchar(30) NOT NULL,
-             `email` varchar (15) NOT NULL,
-             `website` varchar (60) NOT NULL,
-             `phone` varchar (500) NOT NULL,
-             PRIMARY KEY (`id`)
+             id int(11) NOT NULL AUTO_INCREMENT,
+             name varchar (30) NOT NULL,
+             username varchar(30) NOT NULL,
+             email varchar (15) NOT NULL,
+             website varchar (60) NOT NULL,
+             phone varchar (500) NOT NULL,
+             PRIMARY KEY (id)
              )ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
              ''')
         
