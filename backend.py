@@ -2,8 +2,6 @@ import dataclasses
 from flask import Flask, request, jsonify
 from flask_cors import CORS
 import mysql.connector
-conexion = mysql.connector.connect(user='root', password='', host='localhost', database='formulario', port='3306') 
-print(conexion)
 import datetime
 
 
@@ -25,7 +23,7 @@ class Formulario:
         try:
             self.cursor.execute(f"USE {database}")
         except mysql.connector.Error as err:
-            if err.errno == mysql.connector.Error.DB_CREATE_EXISTS:
+            if err.errno == mysql.connector.errorcode.ER_BAD_DB_ERROR:
                 self.cursor.execute(f"CREATE DATABASE {database}")
                 self.conn.database = database
             else:
@@ -39,8 +37,8 @@ class Formulario:
              email varchar (15) NOT NULL,
              website varchar (60) NOT NULL,
              phone varchar (500) NOT NULL,
-             PRIMARY KEY ('id')
-             )ENGINE=InnoDB DEFAULT CHARSET=uft8 COLLATE=uft8_spanish_ci;
+             PRIMARY KEY (id)
+             )ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
              ''')
         
         self.conn.commit()
