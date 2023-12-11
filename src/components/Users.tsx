@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import './../table.css';
+//import './../../js/user';
 
-const Users: React.FC = () => {
+function Users() {
     const [users, setUsers] = useState([{
         id: 0,
         name: '',
@@ -247,6 +248,7 @@ const Users: React.FC = () => {
                 )}
         </div>
     );
-};
+}
+
 
 export default Users;

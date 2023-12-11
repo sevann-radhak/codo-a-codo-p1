@@ -1,5 +1,5 @@
 document.getElementById('btnTraerMensajes').addEventListener('click', () => {
-    fetch('FelipeMoriena.pythonanywhere.com/formulario')
+    fetch('http://FelipeMoriena.pythonanywhere.com/formulario')
       .then(response => response.json())
       .then(datos => {
         console.log("datos", datos)
@@ -36,7 +36,7 @@ document.getElementById('formularioContacto').addEventListener('submit', functio
     const formData = new FormData();
     formData.append('gestion', gestion); // Agregar el detalle a los datos del formulario
 
-    fetch(`FelipeMoriena.pythonanywhere.com/formulario/${id}`, {
+    fetch(`http://FelipeMoriena.pythonanywhere.com/formulario/${id}`, {
       method: 'PUT',
       body: formData
     })
