@@ -100,12 +100,12 @@ formulario = Formulario("localhost", "root", "", "formulario")
 
 @app.route("/mensajes", methods=["GET"])
 def listar_mensajes():
-    respuesta = mensaje.listar_mensajes()
+    respuesta = formulario.listar_mensajes()
     return jsonify(respuesta)
 
 @app.route('/enviar_mensaje', methods=['POST'])
 def recibir_mensaje():
-    data = request.get_json()
+    data = request.form.get()
     print(data)
     print(data['name'])
     #paso 1 descomentar siguiente linea
@@ -117,7 +117,7 @@ def responder_mensaje(id):
     #Recojo los datos del form
     gestion = request.form.get("gestion")
     
-    if mensaje.responder_mensaje(id, gestion):
+    if formulario.responder_mensaje(id, gestion):
         return jsonify({"mensaje": "Mensaje modificado"}), 200
     else:
         return jsonify({"mensaje": "Mensaje no encontrado"}), 403
