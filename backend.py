@@ -27,21 +27,30 @@ class Formulario:
                 raise err
             
  
-        self.cursor.execute('''CREATE TABLE IF NOT EXISTS formulario (
+        # self.cursor.execute('''CREATE TABLE IF NOT EXISTS formulario (
+        #     id int(11) NOT NULL AUTO_INCREMENT,
+        #     nombre varchar (30) NOT NULL,
+        #     apellido varchar(30) NOT NULL,
+        #     telefono varchar (15) NOT NULL,
+        #     email varchar (60) NOT NULL,
+        #     mensaje varchar (500) NOT NULL,
+        #     fecha_envio datetime NOT NULL,
+        #     leido tinyint(1) NOT NULL,
+        #     gestion varchar (500) DEFAULT NULL,
+        #     fecha_gestion datetime DEFAULT NULL,
+        #     PRIMARY KEY (id)
+        #     )ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+        #     ''')
+        self.cursor.execute('''CREATE TABLE IF NOT EXISTS usuarios (
             id int(11) NOT NULL AUTO_INCREMENT,
-            nombre varchar (30) NOT NULL,
-            apellido varchar(30) NOT NULL,
-            telefono varchar (15) NOT NULL,
+            name varchar (30) NOT NULL,
+            username varchar(30) NOT NULL,
+            phone varchar (15) NOT NULL,
             email varchar (60) NOT NULL,
-            mensaje varchar (500) NOT NULL,
-            fecha_envio datetime NOT NULL,
-            leido tinyint(1) NOT NULL,
-            gestion varchar (500) DEFAULT NULL,
-            fecha_gestion datetime DEFAULT NULL,
+            website varchar (500) NOT NULL,
             PRIMARY KEY (id)
             )ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
             ''')
-        
         self.conn.commit()
         
         self.cursor.close()
@@ -57,6 +66,7 @@ class Formulario:
         sql = "INSERT INTO  usuarios(name, username, email, website, phone) VALUES (%s, %s, %s, %s, %s)"
         fecha_envio = datetime.datetime.now()
         valores = (name, username, email, website, phone)
+        print(name)
         
  #paso 4: verificar que este metodo funcione y que el registro quede guardado en la bbddd
  
@@ -105,9 +115,7 @@ def listar_mensajes():
 
 @app.route('/enviar_mensaje', methods=['POST'])
 def recibir_mensaje():
-    data = request.form.get()
-    print(data)
-    print(data['name'])
+    data = request.get_json()
     #paso 1 descomentar siguiente linea
     formulario.enviar_mensaje(data['name'], data['username'], data['email'], data['website'], data['phone'])
     return jsonify({'success': True})
@@ -115,7 +123,7 @@ def recibir_mensaje():
 @app.route("/mensajes/<int:id>", methods=["PUT"])
 def responder_mensaje(id):
     #Recojo los datos del form
-    gestion = request.form.get("gestion")
+    gestion = request.get_json("gestion")
     
     if formulario.responder_mensaje(id, gestion):
         return jsonify({"mensaje": "Mensaje modificado"}), 200
